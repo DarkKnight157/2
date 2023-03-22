@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>留言板</title>
+</head>
+<body>
+<h1>留言板</h1>
+
+<form method="POST" action="{{ url_for('post_add') }}">
+  <label for="content">留言内容：</label><br>
+  <textarea id="content" name="content" rows="4" cols="40"></textarea><br>
+  <input type="submit" value="提交">
+</form>
+
+<hr>
+
+{% if messages %}
+  <h2>所有留言</h2>
+  <ul>
+  {% for message in messages|reverse %}
+    <li>{{ message.time.strftime('%Y-%m-%d %H:%M:%S') }}：{{ message.content }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>目前还没有留言</p>
+{% endif %}
+
+</body>
+</html>
