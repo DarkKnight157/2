@@ -9,8 +9,7 @@ messages = []
 # 首页
 @app.route('/')
 def index():
-    return '<h1>Hello</h1>', 200
-    # return render_template('index.html.jinja2', messages=messages)
+    return render_template('index.html.jinja2', messages=messages)
 
 
 # 提交留言
